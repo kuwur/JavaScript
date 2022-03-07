@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="radio" name="n" id="" value="1" v-model="hobby"><label >撞球</label>    
+        <input type="radio" name="n" id="" value="2" v-model="hobby"><label >唱歌</label>    
+        <input type="radio" name="n" id="" value="3" v-model="hobby"><label >程式</label>
+        <h1>{{hobby}}</h1>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                hobby : 1
+            } 
+        })
+    </script>
+</body>    
+</html>

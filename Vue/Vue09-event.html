@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+    <div id="app">
+        <h1>歡迎來到{{message}}</h1>
+        <!-- showInf、showInf()都可以 -->
+        <button v-on:click="showInf">點我</button>
+        <!-- 縮寫 -->
+        <button @click="showInf">點我</button>
+        <!-- 傳參數，順序可調換 -->
+        <button @click="showInf2(66,$event)">點我</button>
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: { //補充：配在data內的值，Vue會做數據代理
+                message: 'hello cat'
+            },
+            methods: { //補充：methods內Vue不會數據代理，而是直接拿來用
+                //1.也可showInf(e)
+                //2.不要用箭頭函數，會造成this往外找，變成window
+                showInf(event) { 
+                    console.log(event.target) //拿到目標元素
+                    console.log(event.target.innerText)
+                    console.log(this) //此處this是vm
+                    // alert('hi')
+                },
+                showInf2(number,event) { //也可showInf(e)
+                    console.log(number);
+                    console.log(event.target.innerText)
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

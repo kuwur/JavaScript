@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+
+    <div id="app">
+        {{text}}
+    </div>
+
+    <script>
+        var a = new Vue({
+            el: "#app",
+            //函式寫法，不要用箭頭函數，一但使用就不用Vue管理
+            // data : function (){
+            //     return{
+            //       text : "hello cat"
+            //     }
+            // }
+
+            //縮寫
+            data(){
+                return{
+                  text : "hello cat"
+                }
+            }
+        });
+
+        console.log(a);
+        
+
+    </script>
+</body>
+
+</html>

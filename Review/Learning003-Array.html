@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //方式一
+        var arr1 = new Array();
+        arr1[0] = 'A';
+        arr1[1] = 'B';
+        arr1[2] = 'C';
+        console.log(arr1);
+
+        //方式二
+        var arr2 = [];
+        arr2[0] = 'A';
+        arr2[1] = 'B';
+        arr2[2] = 'C';
+        console.log(arr1);
+
+        //方式三 (最常用)
+        var arr3 = ['A','B','C'];
+        console.log(arr3);
+        arr3.length = 1; // length值可被覆寫
+        console.log(arr3); //['A']
+        arr3.length = 3; 
+        console.log(arr3); //['A', undefined, undefined]
+
+    </script>
+</body>
+</html>

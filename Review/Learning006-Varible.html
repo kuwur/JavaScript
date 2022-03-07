@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //切分變數有效範圍最小單位是function
+        var a = 1;
+        function aa () {
+            var a = 100;
+            return a;
+        }
+        console.log(aa()); //100
+        console.log(a); //1
+
+        //變數提升，此寫法等同於bb2
+        var b = 1;
+        function bb () {
+            console.log(b); //undifined
+            var b = 100;
+            return b;
+        }
+        bb();
+
+        //bb2
+        function bb2 () {
+            var b;
+            console.log(b); //undifined
+            b = 100;
+            return b;
+        }
+        bb2();
+
+        console.log("ans" + window.b); //1
+
+    </script>
+</body>
+</html>

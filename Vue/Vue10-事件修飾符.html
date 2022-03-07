@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin-top  : 20px;
+        }
+        #bubble{
+            background-color: skyblue;
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+
+    <!-- 事件修飾符
+    1.prevent (e.preventDefault) 阻止默認事件
+    2.stop (e.stopPropagation) 阻止事件冒泡
+    3.once 事件只觸發一次
+    -->
+    <div id="app">
+        <!-- prevent -->
+        <a href="https://www.google.com/" @click.prevent="showInf">click on me</a>
+        <!-- stop -->
+        <div id="bubble" @click="showInf">
+            <button @click.stop="showInf">click on me</button>
+        </div>
+        <!-- once -->
+        <button @click.once="showInf">click on me</button>
+    </div>
+
+    <script>
+        new Vue({
+            el : '#app',
+            methods : {
+                showInf(){
+                    alert("go")
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

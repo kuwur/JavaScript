@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+    <!-- 
+    1.Vue中常用的按鍵別名
+        enter
+        delete
+        esc
+        tab (只能搭配 keydown)
+        up
+        down
+        left
+        right
+    2.與事件修飾符串接，順序自訂，效果依序發生
+        @keyup.enter.stop
+    3.組合鍵
+        @keyup.ctrl.y (ctrl + y)
+     -->
+    <div id="app">
+        <input type="text" @keyup.enter="showInf">
+    </div>
+    
+    <script>
+        new Vue({
+            el : '#app',
+            methods : {
+                showInf(e){
+                    console.log(e.target.value)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

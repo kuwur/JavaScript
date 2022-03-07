@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+    <!-- v-model修飾子
+    1.lazy
+    2.number
+    3.trim -->
+    <div id="app">
+        <!-- .lazy，bulr時才會更新data -->
+        <input v-model.lazy="lazy"/><br>
+        <h1>{{lazy}}</h1>
+        <!-- 數字相加需進行轉型 -->
+        <input v-model="num1"/><br>
+        <input v-model="num2"/><br>
+        <h1>{{sum}}</h1>
+        <!-- .number，自動轉型 -->
+        <input v-model.number="num3"/><br>
+        <input v-model.number="num4"/><br>
+        <h1>{{sum2}}</h1>
+        <!-- .trim，自動過濾前後空白字元 -->
+        <input v-model.trim="trim"/><br>
+        <h1>{{trim}}</h1>
+        <h1>{{lazy + trim}}</h1>
+    </div>
+
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                lazy : "hello lazy",
+                num1 : 0,
+                num2 : 0,
+                num3 : 0,
+                num4 : 0,
+                trim : "hello trim"
+            },
+            computed : {
+                sum () {
+                    return Number(this.num1) + Number(this.num2)
+                },
+                sum2 () {
+                    return this.num3 + this.num4
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

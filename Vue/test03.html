@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="showInf1">點我1</button>
+        <button @click="showInf2(50,$event)">點我2</button>
+    </div>
+    <script>
+        new Vue({
+            methods: {
+                showInf1(){
+                    console.log(event.target.innerText)
+                    console.log(event.target)
+                },
+                showInf2(number,e){
+                    console.log(e.target.innerText)
+                    console.log(e.target)
+                    console.log(number)
+                }
+            },
+        }).$mount('#app')
+
+    </script>
+</body>
+</html>

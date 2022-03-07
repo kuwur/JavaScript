@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //在function內重新給值，不會影響外面物件
+        var obj1 = { value: 10 };
+        function aa() {
+            var obj1 = { value: 100 };
+            console.log(obj1.value); //100
+        }
+        aa();
+        console.log(obj1.value); //10
+
+        //直接修改值
+        var obj2 = { value: 10 };
+        function bb() {
+            obj2.value = 100;
+            console.log(obj2.value); //100
+        }
+        bb();
+        console.log(obj2.value); //100
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+    <!-- 計算屬性
+    1.要用的屬性不存在，要通過data的屬性來計算得來
+    2.底層使用Object.definedProperty的get、set實現
+    3.與methods相比，有緩存機制，效率高，但無法帶入參數
+    4.若計算屬性要修改，要去修改所依賴的data屬性 -->
+    <div id="app">
+        <input type="text" v-model="firstName"> <br><br>
+        <input type="text" v-model="lastName"> <br><br>
+        <!-- 計算屬性寫法，總共調用一次(有緩存) -->
+        <div>{{fullName}}</div>
+        <div>{{fullName}}</div>
+        <div>{{fullName}}</div>
+        <!-- method寫法(對比)，總共調用三次 -->
+        <div>{{fullNameMethod()}}</div>
+        <div>{{fullNameMethod()}}</div>
+        <div>{{fullNameMethod()}}</div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el : '#app',
+            data : {
+                firstName : '羅',
+                lastName : '傑'
+            },
+            methods : {
+                fullNameMethod(){
+                    console.log('調用method')
+                    return this.firstName + this.lastName
+                }
+            },
+            computed : {
+                fullName : {
+                    //當有人讀取fullName時,get就會被調用
+                    //調用時機
+                    //1.初次讀取fullName時
+                    //2.所依賴數據發生變時
+                    get(){
+                        console.log('調用get')
+                        return this.firstName + this.lastName
+                    },
+                    set(name){ //在console 上 vm.fullName = 'XX'
+                        this.firstName = name[0]
+                        this.lastName = name[1]
+                    }
+                }
+            }
+
+        })    
+    </script>
+</body>
+
+</html>

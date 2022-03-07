@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //函式宣告可提前呼叫【函式提升】
+        bb(); //1111
+        
+        function bb (){
+            console.log(1111);
+        }
+        
+
+        //函示運算式無法提前呼叫
+        aa(); //error
+        var aa = function (){
+            var a = b = 10;
+            console.log(a,b);
+        }
+        
+    </script>
+</body>
+</html>

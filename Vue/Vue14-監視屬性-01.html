@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>今天天氣很{{info}} {{x}}</h1>
+        <!-- 方法一：使用method -->
+        <button @click="changeWeather">點我切換</button>
+        <!-- 方法二：@xxx="yyy"，直接寫在yyy內，不建議此方式 -->
+        <!-- <button @click="ishot = !ishot;x++">點我切換</button> -->
+    </div>
+        <script>
+        const app = new Vue({
+            data : {
+                ishot : true,
+                x : 0
+            },
+            computed : {
+                info :{
+                    get(){
+                        return this.ishot ? '炎熱' : '涼爽'
+                    }
+                }
+            },
+            methods: {
+                changeWeather(){
+                    this.ishot = !this.ishot
+                    this.x++
+                }
+            },
+
+
+        }).$mount('#app')
+    </script>
+</body>
+</html>

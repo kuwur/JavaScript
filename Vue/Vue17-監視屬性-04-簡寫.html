@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>number1為{{number1}}</h1>
+        <button @click="number1++">點我增加number1</button>
+        <h1>number2為{{number2}}</h1>
+        <button @click="number2++">點我增加number2</button>
+        <h1>number3為{{number3}}</h1>
+        <button @click="number3++">點我增加number3</button>
+        <h1>number4為{{number4}}</h1>
+        <button @click="number4++">點我增加number4</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el : '#app',
+            data : {
+                number1 : 1,
+                number2 : 2,
+                number3 : 3,
+                number4 : 4
+            },
+            watch : {
+                //完整
+                number1 : {
+                    handler(){
+                        console.log('number1增加了')
+                    }
+                },
+                //若只需handler可簡寫
+                number2(){
+                    console.log('number2增加了')
+                }
+
+            }
+        })
+        //完整
+        vm.$watch('number3',{
+            handler(){
+                console.log('number3增加了')
+            }
+        })
+        //簡寫
+        vm.$watch('number4',function(){
+                console.log('number4增加了')
+            }
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style lang="">
+        .style1{
+            font-size: 50px;
+        }
+        .style2{
+            border: solid 3px black;
+        }
+        .style3{
+            background-color: aqua;
+        }
+
+        .basic{
+            width: 400px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 單一 -->
+        <div class="basic" :class="mood" @click="random">{{name}}</div><br><br>
+        <!-- 陣列 -->
+        <div class="basic" :class="arr">{{name}}</div><br><br>
+        <!-- 物件 -->
+        <div class="basic" :class="obj">{{name}}</div><br><br>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                name : 'hello cat',
+                mood : 'style1',
+                arr : ['style1','style2','style3'],
+                obj : {
+                    style1 : false,
+                    style2 : false,
+                    style3 : true
+                }
+            },
+            methods: {
+                random(){
+                    const arr = ['style1','style2','style3']
+                    const a = Math.floor(Math.random() * 3)
+                    this.mood = arr[a]
+                }
+            },
+
+        })
+    </script>
+</body>
+</html>

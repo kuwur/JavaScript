@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- computed與watch區別
+        computed能做的，watch都能做，反之未必
+    重要原則
+        1.被Vue管理的元素，最好寫成普通函數，這樣this才會指向vm或組件實例
+        2.所有不被Vue管理的函數(定時器的回調函數、ajax的回調函數、promise
+          的回調函數等)，最好寫成箭頭函數，這樣this才會指向vm或組件實例 -->
+
+    <div id="app">
+        <input type="text" v-model="firstName"><br><br>
+        <input type="text" v-model="lastName"><br><br>
+        <h1>全名：{{fullName}}</h1>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                firstName : '張',
+                lastName : '三',
+                fullName : '張三',
+            },
+            watch : {
+                firstName(val){
+                    //此需求computed就無法實現
+                    setTimeout(()=>{ //這邊為箭頭函數
+                    this.fullName = val + this.lastName
+                    },1000)
+                },
+                lastName(val){
+                    this.fullName = this.lastName + val
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

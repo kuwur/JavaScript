@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>a的值{{number.a}}</h1>
+        <button @click="number.a++">點我增加a</button>
+        <h1>b的值{{number.b}}</h1>
+        <button @click="number.b++">點我增加a</button>
+
+    </div>
+    <script>
+        new Vue({
+            data : {
+                number : {
+                    a : 1,
+                    b : 2
+                }
+            },
+            watch : {
+                //深度監視某屬性，記得加''
+                'number.a' : {
+                    handler(){
+                        console.log('a改變了')
+                    }
+                },
+                //深度監視整個number，deep默認為false
+                number : {
+                    deep : true, //開啟深度監視
+                    handler(){
+                        console.log('number內改變了')
+                    }
+                }
+            }
+        }).$mount('#app')
+    </script>
+</body>
+</html>

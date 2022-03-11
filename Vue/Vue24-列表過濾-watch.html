@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="keyword">
+        <ul>
+            <li v-for="p in filPersons">
+                {{p.name}} {{p.age}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                keyword : '',
+                persons : [
+                    {id:'001',name:'馬冬梅',age:18},
+                    {id:'002',name:'周冬雨',age:19},
+                    {id:'003',name:'周杰倫',age:20},
+                    {id:'004',name:'溫兆倫',age:21}
+                ],
+                filPersons : []
+            },
+            watch : {
+                keyword : {
+                    immediate : true,
+                    handler(val){
+                        this.filPersons = this.persons.filter((p)=>{
+                            return p.name.indexOf(val) !== -1
+                        })
+                    }
+                }
+            }
+
+
+        })
+
+    </script>
+</body>
+</html>

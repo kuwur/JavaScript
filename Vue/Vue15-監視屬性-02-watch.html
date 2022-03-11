@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>今天天氣很{{info}}</h1>
+        <button @click="changeWeather">點我切換</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            data: {
+                ishot: true,
+            },
+            computed: {
+                info: {
+                    get() {
+                        return this.ishot ? '炎熱' : '涼爽'
+                    }
+                }
+            },
+            methods: {
+                changeWeather() {
+                    this.ishot = !this.ishot
+                }
+            },
+            //方式一
+            watch: {
+                //監測data內屬性，也可監測computed內屬性
+                ishot: {
+                    //初始化時，handler會調用一次
+                    immediate: true,
+                    //ishot被改變時，即會調用handler
+                    handler(newValue, oldValue) {
+                        console.log('天氣已被修改', newValue, oldValue);
+                    }
+                }
+            }
+        }).$mount('#app')
+
+        //方式二
+        // vm.$watch('ishot', {
+        //     immediate: true,
+        //     handler(newValue, oldValue) {
+        //         console.log('天氣已被修改', newValue, oldValue);
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

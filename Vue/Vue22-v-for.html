@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 遍歷陣列 -->
+        <ul>             <!-- in可改成of -->
+            <li v-for="(p, index) in persons" :key="index">
+                {{p.name}} {{p.age}}
+            </li>
+        </ul>
+        <!-- 遍歷物件 -->
+        <ul>
+            <li v-for="(value, key) in car" :key="key">
+                {{key}} {{value}}
+            </li>
+        </ul>
+        <!-- 遍歷字串(用的少) -->
+        <ul>
+            <li v-for="(char, index) in string" :key="index">
+                {{char}} {{index}}
+            </li>
+        </ul>
+        <!-- 遍歷指定次數(用的少) -->
+        <ul>
+            <li v-for="(value, index) in 5" :key="index">
+                {{value}} {{index}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                persons : [
+                    {name : '張三', age : 18},
+                    {name : '李四', age : 19},
+                    {name : '王五', age : 20}
+                ],
+                car : {
+                    name : 'tesla',
+                    color : 'black',
+                    price : 200
+                },
+                string : 'abcde'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>目前n值為{{n}}</h1>
+        <button @click="n++">點我增加n</button>
+
+        <!-- show若為false，隱藏整個元素，實際會佔空間 -->
+        <h1 v-show="true">show1</h1>
+        <h1 v-show="false">show2</h1>
+        <!-- if若為false，整個元素消失，不佔空間 -->
+        <h1 v-if="true">if1</h1>
+        <h1 v-if="false">if2</h1>
+
+        <!-- if搭配else、元素需連續在一起，結構不能被打斷 -->
+        <h1 v-if="n === 1">apple</h1>
+        <h1 v-else-if="n === 2">goole</h1>
+        <h1 v-else-if="n === 3">tesla</h1>
+        <h1 v-else>other</h1>
+
+        <!-- 使用template，條件成立後不會佔空間，不會破壞原本結構 -->
+        <template v-if="n === 4"> <!-- 不能搭配v-show -->
+            <h1>ha ha</h1>
+            <h1>ha ha</h1>
+            <h1>ha ha</h1>
+        </template>
+
+        <!-- 使用div，條件成立後佔空間，會破壞原本結構 -->
+        <div v-if="n === 4">
+            <h1>ha ha</h1>
+            <h1>ha ha</h1>
+            <h1>ha ha</h1>
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                n : 0
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a (){
+        };
+        a.prototype.name = 'prototype';
+        var b = new a();
+        
+        //1.自身屬性找不到，會往原型中找
+        //2.原型中找不到，再往原型中的原型找
+
+        //name在第一層原型
+        console.log(b.name); //prototype
+        console.log(b.__proto__.name); //prototype
+        console.log('name' in b); //true
+        console.log(b.hasOwnProperty('name')); //false
+        console.log(b.__proto__.hasOwnProperty('name')); //ture
+        //hasOwnProperty在第二層原型(預設)
+        console.log('hasOwnProperty' in b); //true
+        console.log(b.hasOwnProperty('hasOwnProperty')); //false
+        console.log(b.__proto__.hasOwnProperty('hasOwnProperty')); //false
+        console.log(b.__proto__.__proto__.hasOwnProperty('hasOwnProperty')); //true
+
+    </script>
+</body>
+</html>

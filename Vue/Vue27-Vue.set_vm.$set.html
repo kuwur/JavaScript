@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- Vue監視數據的原理
+        1.vue會監視data中所有層次的數據
+
+        2.如何監測對象中的數據
+            通過setter實現監測，且要在new Vue時就傳入要監測的數據
+            (1).對象中後追加的屬性，Vue默認不做響應式處理
+            (2).如需給後添加的屬性做響應式，要使用以下API：
+                Vue.set(targer, propertyName/index, value) 或
+                vm.$set(targer, propertyName/index, value)
+        
+        3.如何監測陣列中的屬性
+            通過"包裹陣列更新元素的方法"(如push)實現，本質就是做了兩件事：
+            (1).調用原生對應的方法對陣列進行更新
+            (2).重新解析模板，進而更新頁面
+        
+        4.在Vue修改陣列中的某個元素一定要用如下方法：
+            (1).使用這些API：
+                push、pop、shift、unshift、splice、sort、reverse
+            (2).Vue.set() 或 vm.$set() -->
+
+
+    <div id="app">
+        <button @click="addSex">點我增加性別</button>
+        <button v-if="student.sex" @click="changeSex">點我變性</button><br><br>
+        <button @click="addFriend">添加一朋友</button><br><br>
+        <button @click="changeFristFriendName">修改第一位朋友名字為Jocelyn</button><br><br>
+        <button @click="addHobby">添加一個愛好</button><br><br>
+        <button @click="changeFirstHobbyToDrive">修改第一個愛好為開車</button><br><br>
+        <button @click="removeSmoke">戒菸</button><br><br>
+
+        <h1>姓名：{{student.name}}</h1>
+        <h1>年紀：{{student.age}}</h1>
+        <h1 v-if="student.sex">性別：{{student.sex}}</h1>
+        <h1>嗜好：</h1>
+        <ul>
+            <li v-for="(p, index) in student.hobby" :key="index">
+                {{p}}
+            </li>
+        </ul>
+        <h1>朋友：</h1>
+        <ul>
+            <li v-for="(f, index) in student.friends" :key="index">
+                {{f.name}}-{{f.age}}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el : '#app',
+            data : {
+                student : {
+                    name : 'Jerry',
+                    age : 32,
+                    sex : '',
+                    hobby : ['smoke','drink','sex'],
+                    friends : [
+                        {name:'Tony',age:32},
+                        {name:'Albert',age:32}
+                    ]
+                }
+            },
+            methods: {
+                addSex(){
+                    // Vue.set(this.student,'sex','男')
+                    this.$set(this.student,'sex','男')
+                },
+                changeSex(){
+                    this.student.sex = this.student.sex === '男' ? '女' : '男'
+                },
+                addFriend(){
+                    this.student.friends.unshift({name:'Kevin',age:32})
+                },
+                changeFristFriendName(){
+                    this.student.friends[0].name = 'Jocelyn'
+                },
+                addHobby(){
+                    this.student.hobby.push('poker')
+                },
+                changeFirstHobbyToDrive(){
+                    //vue無法監視陣列中的節點
+                    // this.student.hobby[0] = 'drive' //error
+
+                    //正確寫法
+                    // this.student.hobby.splice(0,1,'drive')
+                    // Vue.set(this.student.hobby,0,'drive')
+                    this.$set(this.student.hobby,0,'drive')
+                },
+                removeSmoke(){
+                    this.student.hobby = this.student.hobby.filter((h)=>{
+                        return h !== 'smoke'
+                    })
+                }
+
+            },
+
+        })
+    </script>
+</body>
+</html>

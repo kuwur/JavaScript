@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="showUp">
+            account：<input type="text" v-model.trim="userInf.account"><br><br>
+            password：<input type="password" v-model="userInf.password"><br><br>
+            <!-- 原生type="number" -->
+            age：<input type="number" v-model.number="userInf.age"><br><br>
+            sex：
+            <!-- radio要給value值 -->
+            man<input type="radio" v-model="userInf.sex" name="sex" value="man">
+            female<input type="radio" v-model="userInf.sex" name="sex" value="female"><br><br>
+            hobby：
+            <!-- checkbox要給value值，且v-model初始值要為陣列，否則收集的會是checked(boolean) -->
+            study<input type="checkbox" value="study" v-model="userInf.hobby">
+            game<input type="checkbox" value="game" v-model="userInf.hobby">
+            eat<input type="checkbox" value="eat" v-model="userInf.hobby"><br><br>
+            district：
+            <select v-model="userInf.district">
+                <option value="">請選擇</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="Los angeles">Los angeles</option>
+            </select><br><br>
+            message：<textarea v-model.lazy="userInf.message"></textarea><br><br>
+            <input type="checkbox" v-model="userInf.agree">同意<a href="http://www.google.com"><用戶協議></a>
+            <button>提交</button>
+        </form>
+    </div>
+        <script>
+            new Vue({
+                el : '#app',
+                data : {
+                    userInf : {
+                        account : '',
+                        password : '',
+                        age : '',
+                        sex : '',
+                        hobby : [],
+                        district : '',
+                        message : '',
+                        agree : ''
+                    }
+                },
+                methods: {
+                    showUp(){
+                        console.log(JSON.stringify(this.userInf))
+                    }
+                },
+            })
+            </script>
+</body>
+</html>

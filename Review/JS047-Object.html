@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = new Object();
+        obj.name = 'Jocelyn';
+        obj.sex = 'femal';
+
+        console.log(obj.name); //Jocelyn
+        //讀取沒定義的屬性，不會報錯，回傳undefined
+        console.log(obj.age); //undefined
+        //刪
+        delete obj.name;
+        console.log(obj.name); //undefined
+    </script>
+</body>
+</html>

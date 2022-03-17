@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun (a,b){
+            console.log(a+b);
+        }
+        fun(2,3);//5
+        //調用時，解析器不會檢查參數類型
+        fun(2,'3');//23
+        //調用時，解析器不會檢查參數數量，多餘的會忽略
+        fun(2,'3',ture,null);//23
+        fun(2);//NaN
+        
+    </script>
+</body>
+</html>

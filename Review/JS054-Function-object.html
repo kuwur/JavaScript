@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //參數為對象
+        var obj = {
+            name : 'Jocelyn',
+            age : 22,
+            sex : 'female'
+        };
+        var fun = function(o){
+            console.log(o.name);
+            console.log(o.age);
+            console.log(o.sex);
+        };
+        fun(obj);
+
+        //參數為函數1
+        var fun2 = function(f){
+            f(obj);
+        }
+        //函數對象，相當於直接使用函數對象
+        fun2(fun);
+
+        //參數為函數2
+        var multiply = function(num){
+            return num * num;
+        };
+        //調用函數，相當於使用函數的返回值
+        console.log(multiply(multiply(2))); //16
+    </script>
+</body>
+</html>

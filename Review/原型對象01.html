@@ -8,12 +8,15 @@
 </head>
 <body>
     <script>
+        //每個函數被創建，解析器會向函數中添加一個屬性propotype
         function a (){
         };
         a.prototype.sayHello = function(){
             console.log(this.name)
         };
 
+        // 當函數以構造函數的形式調用時，它所創建的對象中都會有一個隱含的屬性，
+        // 指向該構造函數的原型對象，可以通過__proto__來訪問
         var b = new a();
         var c = new a();
 

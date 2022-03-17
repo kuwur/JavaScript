@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //返回值可以是個函數
+        function fun1 (){
+            function fun2(){
+                console.log('fun2222');
+            };
+            return fun2;
+        }
+        a = fun1();
+        a(); //fun2222
+        fun1()(); //fun2222
+    </script>
+</body>
+</html>

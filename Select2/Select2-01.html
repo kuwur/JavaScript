@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+</head>
+
+<body>
+    <select id="select2-multiple" class="select2-multiple" multiple="multiple"></select>
+
+<script>
+        var options = [
+            { id: 0, text: 'enhancement' },
+            { id: 1, text: 'bug' },
+            { id: 2, text: 'duplicate' },
+            { id: 3, text: 'invalid' },
+            { id: 4, text: 'wontfix' },
+            { id: 5, text: 'wontfix5' },
+            { id: 6, text: 'wontfix6' },
+            { id: 7, text: 'wontfix7' },
+            { id: 8, text: 'wontfix8' },
+            { id: 9, text: 'wontfix9' },
+            { id: 10, text: 'wontfix10' },
+            { id: 11, text: 'wontfix11' },
+            { id: 12, text: 'wontfix12' },
+            { id: 13, text: 'wontfix13' },
+            { id: 14, text: 'wontfix14' },
+            { id: 15, text: 'wontfix15' },
+            { id: 16, text: 'wontfix16' },
+            { id: 17, text: 'wontfix17' },
+            { id: 18, text: 'wontfix18' },
+            { id: 19, text: 'wontfix19' },
+            { id: 20, text: 'wontfix20' }
+        ];
+
+
+
+        $(function () {
+            $(".select2-multiple").select2({
+                placeholder: '請選擇',
+                // closeOnSelect: false,
+                data: options,
+                // allowClear: true,
+                // maximumInputLength: 10,
+                // minimumInputLength: 1,
+                minimumResultsForSearch: -1,
+                width: '100px'
+                // tokenSeparators: [',', ' ']
+            });
+        });
+
+    </script>
+</body>
+
+</html>

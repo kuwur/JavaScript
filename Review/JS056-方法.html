@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //物件內的函數，稱為方法
+        var obj1 = new Object();
+        obj1.name = 'Jocyln'
+        obj1.age = 18
+        obj1.sayAge = function (){
+            console.log(obj1.age)
+        }
+        obj1.sayAge();
+
+        //方法就是函數，只有名稱上區別，本質一樣
+        var obj2 = {
+            name: 'Jerry',
+            age: '40',
+            sayName: function(){
+                console.log(this.name);
+            }
+        }
+        obj2.sayName();
+
+        console.log("111".toString)
+
+    </script>
+</body>
+</html>

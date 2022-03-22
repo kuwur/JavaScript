@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun(){
+            console.log(this.name)
+        }
+
+        var name = '全局name屬性'
+
+        var obj1 = {
+            name : 'Jecelyn',
+            sayName : fun
+        }
+
+        var obj2 = {
+            name : 'Jerry',
+            sayName : fun
+        }
+
+        fun(); // 等於window.fun()
+
+        obj1.sayName();
+        obj2.sayName();
+
+
+    </script>
+</body>
+</html>
